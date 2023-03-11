@@ -60,7 +60,7 @@ const SignUpForm = () => {
           label="Display Name"
           inputOptions={{
             value: displayName,
-            type: "password",
+            type: "text",
             required: true,
             name: "displayName",
             onChange: changeHandler,
@@ -71,7 +71,7 @@ const SignUpForm = () => {
           label="Email"
           inputOptions={{
             value: email,
-            type: "password",
+            type: "email",
             required: true,
             name: "email",
             onChange: changeHandler,
