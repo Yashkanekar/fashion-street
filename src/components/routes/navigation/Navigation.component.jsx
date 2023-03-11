@@ -1,9 +1,15 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { UserContext } from "../../../contexts/UserContext";
 import { ReactComponent as FsLogo } from "../../../assets/fashion-street-logo.svg";
 import "./navigation.styles.scss";
+import { linkWithPhoneNumber } from "firebase/auth";
 
 const Navigation = () => {
+  //everytime the currentUSer state value stored in the UserContext changes,it triggers a rerender in every other component which is using that "currentUser" state value
+  const { currentUser } = useContext(UserContext);
+  console.log(currentUser);
+
   return (
     <Fragment>
       <div className="navigation">

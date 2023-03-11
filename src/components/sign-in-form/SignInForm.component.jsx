@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "../button/Button.component";
 import FormInput from "../form-input/FormInput.component";
 import {
@@ -6,21 +6,24 @@ import {
   signInWithGooglePopup,
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
+import { UserContext } from "../../contexts/UserContext";
 import "./sign-in-form.styles.scss";
 
+const defaultFormFields = {
+  email: "",
+  password: "",
+};
+
 const SignInForm = () => {
+  const [formFields, setFormFields] = useState(defaultFormFields);
+  const { email, password } = formFields;
+
+  const { setCurrentUser } = useContext(UserContext);
+
   const signInWithGoogle = async () => {
     const response = await signInWithGooglePopup();
     await createUserDocumentFromAuth(response.user);
   };
-
-  const defaultFormFields = {
-    email: "",
-    password: "",
-  };
-
-  const [formFields, setFormFields] = useState(defaultFormFields);
-  const { email, password } = formFields;
 
   const resetFormFields = () => {
     setFormFields(defaultFormFields);
@@ -36,8 +39,9 @@ const SignInForm = () => {
 
     try {
       const { user } = await signInUserFromEmailAndPassword(email, password);
+      setCurrentUser(user);
+
       resetFormFields();
-      console.log(user);
     } catch (error) {
       if (error.code === "auth/wrong-password") {
         alert("Incorrect password");
@@ -48,6 +52,7 @@ const SignInForm = () => {
       }
     }
   };
+
   return (
     <div className="signup-form-container">
       <h2>Already have an account?</h2>
