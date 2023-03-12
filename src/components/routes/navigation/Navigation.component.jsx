@@ -6,11 +6,10 @@ import "./navigation.styles.scss";
 import { signOutUser } from "../../../utils/firebase/firebase.utils";
 const Navigation = () => {
   //everytime the currentUSer state value stored in the UserContext changes,it triggers a rerender in every other component which is using that "currentUser" state value
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const logoutHandler = async () => {
     await signOutUser();
-    setCurrentUser(null);
   };
 
   return (
