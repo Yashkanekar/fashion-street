@@ -3,6 +3,11 @@ body {
   font-family: "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 20px 40px;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }
 
 code {
