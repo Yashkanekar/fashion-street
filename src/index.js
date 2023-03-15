@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import App from "./App";
 import { UserProvider } from "./contexts/UserContext";
-import { CategoriesProvider } from "./contexts/CategoriesMapContext";
+import { CategoriesProvider } from "./contexts/CategoriesContext";
 import { CartProvider } from "./contexts/CartContext";
 import reportWebVitals from "./reportWebVitals";
 
