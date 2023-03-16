@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./category-preview.styles.scss";
 
 const CategoryPreview = ({ title, products }) => {
-  console.log(title);
+  // console.log(title);
   return (
     <div className="category-preview-container">
       <h2>
